@@ -10,6 +10,7 @@
       <p>Username: </p>
       <p>Password: </p>
     </div>
+    <!-- TODO: add footer -->
   </div>
 </template>
 
