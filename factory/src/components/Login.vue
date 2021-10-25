@@ -1,22 +1,18 @@
 <template>
   <div class="hello">
     <!-- leave alone -->
-    <nav class="master">
-      <img alt="Vue logo" src="../assets/logo.png">
       <h1>{{ msg }}</h1>
-    </nav>
     <!-- login stuff -->
     <div class="login">
       <p>Username: </p>
       <p>Password: </p>
     </div>
-    <!-- TODO: add footer -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Login',
   props: {
     msg: String
   }
@@ -25,11 +21,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.master {
-  display: grid;
-  /* align-items: flex-start; */
-  justify-content: center;
-}
+
 .login {
   display: grid;
   padding: 2em;
@@ -38,7 +30,7 @@ export default {
   justify-content: center;
   margin: 0 auto; /* centers the div */
   max-width: 16em;
-  background-color: #f1faee;
+  background-color: #ade8f4;
 }
 h1 {
   padding-left: 1em;

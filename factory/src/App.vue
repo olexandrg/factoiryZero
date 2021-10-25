@@ -3,35 +3,33 @@
     <!-- Factory Logo here -->
     <!-- TODO: optional message -->
     <Nav></Nav>
-    <HelloWorld msg=""/>
+    <Login msg=""/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Login from './components/Login.vue'
 import Nav from './components/Nav.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Login,
     Nav
   }
 }
 </script>
 
+// Style
 <style>
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 
-img {
-  align-items: flex-start;
-}
+
 </style>
