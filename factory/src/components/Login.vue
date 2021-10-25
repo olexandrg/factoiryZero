@@ -4,8 +4,14 @@
       <h1>{{ msg }}</h1>
     <!-- login stuff -->
     <div class="login">
-      <p>Username: </p>
-      <p>Password: </p>
+      <!-- <p>Username: </p>
+      <p>Password: </p> -->
+      <div v-if="!$auth.loading">
+      <!-- show login when not authenticated -->
+      <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
+      <!-- show logout when authenticated -->
+      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
+    </div>
     </div>
   </div>
 </template>
@@ -15,6 +21,18 @@ export default {
   name: 'Login',
   props: {
     msg: String
+  },
+  methods: {
+    // Log the user in
+    login() {
+      this.$auth.loginWithRedirect();
+    },
+    // Log the user out
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      });
+    }
   }
 }
 </script>

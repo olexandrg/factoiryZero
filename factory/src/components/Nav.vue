@@ -2,10 +2,10 @@
   <nav class="navbar container" role="navigation" aria-label="main navigation">
     <img alt="factory logo" src="../assets/logo.png">
     <div class="navbar-start">
-        <router-link to="/" class="navbar-item">Home</router-link>
+        <!-- <router-link to="/" class="navbar-item">Home</router-link>
         <router-link to="/about" class="navbar-item">About</router-link>
         <router-link to="/about" class="navbar-item">Lorem</router-link>
-        <router-link to="/about" class="navbar-item">Ipsum</router-link>
+        <router-link to="/about" class="navbar-item">Ipsum</router-link> -->
      </div>
   </nav>
 </template>
