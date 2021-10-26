@@ -15,7 +15,6 @@ nav {
     margin-bottom: 30px;
     border-bottom: 1px solid black;
     display: grid;
-    /* align-items: flex-start; */
     justify-content: center;
 }
 a {

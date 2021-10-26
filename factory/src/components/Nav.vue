@@ -14,25 +14,26 @@
   };
 </script>
 
-// Style
 <style>
 nav {
     background-color: #fefae0;
     margin-bottom: 30px;
-    border-bottom: 1px solid black;
+    border-bottom: none; 
     display: grid;
-    /* align-items: flex-start; */
     justify-content: center;
 }
+.navbar-start {
+    padding-bottom: 0.2em;
+}
 a {
-    font-weight: bold;
-    color: #2c3e50;
+    background-color: #2A9D8F;
+    color: whitesmoke;
+    padding: 0.2em;
+    text-decoration: none;
+    border: 1px solid #264653;
 }
-router-link {
-    padding: 5px;
-}
-router-link:hover {
-    color: gray;
+a:hover {
+    color: #cccccc;
     cursor:pointer;
 }
 img {
