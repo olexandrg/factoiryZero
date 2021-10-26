@@ -1,16 +1,10 @@
 <template>
-  <nav class="navbar container" role="navigation" aria-label="main navigation">
-    <img alt="factory logo" src="../assets/logo.png">
-    <div class="navbar-start">
-        <router-link to="/">Home</router-link>
-        <router-link to="/tech">Technician</router-link>
-     </div>
-  </nav>
+    <p>Technician View</p>
 </template>
 
 <script>
   export default {
-    name: 'Nav',
+    name: 'Technician'
   };
 </script>
 

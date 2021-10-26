@@ -20,9 +20,11 @@ Vue.use(Auth0Plugin, {
   }
 });
 
+
 // Leave this alone
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
+  router
 }).$mount('#app')

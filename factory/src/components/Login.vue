@@ -1,17 +1,16 @@
 <template>
   <div class="hello">
     <!-- leave alone -->
-      <h1>{{ msg }}</h1>
+    <h1>{{ msg }}</h1>
+
     <!-- login stuff -->
     <div class="login">
-      <!-- <p>Username: </p>
-      <p>Password: </p> -->
       <div v-if="!$auth.loading">
-      <!-- show login when not authenticated -->
-      <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
-      <!-- show logout when authenticated -->
-      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
-    </div>
+        <!-- show login when not authenticated -->
+        <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
+        <!-- show logout when authenticated -->
+        <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +25,7 @@ export default {
     // Log the user in
     login() {
       this.$auth.loginWithRedirect();
+      // TODO: redirect to engineering dashboard
     },
     // Log the user out
     logout() {
