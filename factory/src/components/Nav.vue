@@ -16,7 +16,7 @@
 
 <style>
 nav {
-    background-color: #fefae0;
+    background-color: whitesmoke;
     margin-bottom: 30px;
     border-bottom: none; 
     display: grid;
@@ -30,7 +30,9 @@ a {
     color: whitesmoke;
     padding: 0.2em;
     text-decoration: none;
-    border: 1px solid #264653;
+    border-style: solid;
+    border-color: #264653;
+    border-width: 1px 1px 0 1px;
 }
 a:hover {
     color: #cccccc;
