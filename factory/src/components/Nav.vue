@@ -1,9 +1,10 @@
 <template>
   <nav class="navbar container" role="navigation" aria-label="main navigation">
     <img alt="factory logo" src="../assets/logo.png">
-    <div class="navbar-start">
+    <div class="navbar-start" >
         <router-link to="/">Home</router-link>
-        <router-link to="/tech">Technician</router-link>
+        <router-link to="/tech" v-if="$auth.isAuthenticated">Dashboard</router-link>
+        <!-- TODO: Add links for trouble reports -->
      </div>
   </nav>
 </template>

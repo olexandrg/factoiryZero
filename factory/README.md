@@ -10,30 +10,9 @@
 - Update global Vue package with: 
 `npm update -g @vue/cli`
 - Run project with:
-`vue serve`
+`npm run serve`
 
-
-## Leaving default directions for later reference below...
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Starting API 
+- Navigate to api folder and start the server with:
+`node server.js`  
+- Confirm that the server is running in console with `Server listening on port::3070`  
