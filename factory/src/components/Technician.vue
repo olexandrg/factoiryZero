@@ -1,11 +1,39 @@
 <template>
-    <p>Technician View</p>
+    <div>
+        <p>Technician View</p>
+        <div class="number">
+            {{numberOfUsers}}
+        </div>
+        <div class="btn">
+            <button @click='getAllUsers()' type="button" class="btn btn-warning">Get all Users</button>
+        </div>
+        <div v-if="users.length > 0">
+            {{users[0].firstName}}
+        </div>
+    </div>
 </template>
 
 <script>
-  export default {
-    name: 'Technician'
-  };
+    //import Users from './Users.vue'
+    import { getAllUsers } from '../services/UserService'
+
+    export default {
+    name: 'Technician',
+    data() {
+        return {
+            users: [],
+            numberOfUsers: 0
+        }
+    },
+    methods: {
+    getAllUsers() {
+        getAllUsers().then(response => {
+        this.users = response
+        this.numberOfUsers = this.users.length
+    })
+    }
+    },
+    };
 </script>
 
 // Style
@@ -15,7 +43,6 @@ nav {
     margin-bottom: 30px;
     border-bottom: 1px solid black;
     display: grid;
-    /* align-items: flex-start; */
     justify-content: center;
 }
 a {

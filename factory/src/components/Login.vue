@@ -37,34 +37,15 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style>
 .login {
   display: grid;
   padding: 2em;
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 0.5em;
   justify-content: center;
   margin: 0 auto; /* centers the div */
   max-width: 16em;
   background-color: #ade8f4;
-}
-h1 {
-  padding-left: 1em;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>

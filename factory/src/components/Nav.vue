@@ -1,9 +1,10 @@
 <template>
   <nav class="navbar container" role="navigation" aria-label="main navigation">
     <img alt="factory logo" src="../assets/logo.png">
-    <div class="navbar-start">
+    <div class="navbar-start" >
         <router-link to="/">Home</router-link>
-        <router-link to="/tech">Technician</router-link>
+        <router-link to="/tech" v-if="$auth.isAuthenticated">Dashboard</router-link>
+        <!-- TODO: Add links for trouble reports -->
      </div>
   </nav>
 </template>
@@ -14,25 +15,28 @@
   };
 </script>
 
-// Style
 <style>
 nav {
-    background-color: #fefae0;
+    background-color: whitesmoke;
     margin-bottom: 30px;
-    border-bottom: 1px solid black;
+    border-bottom: none; 
     display: grid;
-    /* align-items: flex-start; */
     justify-content: center;
 }
+.navbar-start {
+    padding-bottom: 0.2em;
+}
 a {
-    font-weight: bold;
-    color: #2c3e50;
+    background-color: #2A9D8F;
+    color: whitesmoke;
+    padding: 0.2em;
+    text-decoration: none;
+    border-style: solid;
+    border-color: #264653;
+    border-width: 1px 1px 0 1px;
 }
-router-link {
-    padding: 5px;
-}
-router-link:hover {
-    color: gray;
+a:hover {
+    color: #cccccc;
     cursor:pointer;
 }
 img {
