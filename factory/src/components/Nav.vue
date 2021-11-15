@@ -20,7 +20,7 @@
 nav {
     background-color: whitesmoke;
     margin-bottom: 30px;
-    border-bottom: none; 
+    border-bottom: 1px solid #264653; 
     display: grid;
     justify-content: center;
 }
