@@ -5,6 +5,7 @@ const app = express(),
       port = 3070;
 
 // place holder for the data
+// leave this const alone for now
 const users = [
   {
     id: "1",
@@ -26,6 +27,7 @@ const users = [
   }
 ];
 
+// leave this alone; default users data will be deleted later
 app.use(bodyParser.json());
 app.use(express.static(process.cwd() + '/my-app/dist'));
 
@@ -42,6 +44,28 @@ app.post('/api/user', (req, res) => {
   res.json("user addedd");
 });
 
+// placeholder for factory tools
+const tools = [
+  {
+    bin: "MFG133A",
+    customer: "TSMC",
+    type: "Sabre 3D",
+    sn: "001"
+  },
+  {
+    bin: "MFG134B",
+    customer: "Intel",
+    type: "Gamma XPR",
+    sn: "335"
+  }
+];
+
+app.get('/api/tools', (req, res) => {
+  console.log('api/tools called')
+  res.json(tools);
+});
+
+// required binders for server; leave alone
 app.get('/', (req,res) => {
   res.sendFile(process.cwd() + '/my-app/dist/index.html');
 });
