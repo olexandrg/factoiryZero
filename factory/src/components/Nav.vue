@@ -3,8 +3,9 @@
     <img alt="factory logo" src="../assets/logo.png">
     <div class="navbar-start" >
         <router-link to="/">Home</router-link>
-        <router-link to="/tech" v-if="$auth.isAuthenticated">Dashboard</router-link>
-        <!-- TODO: Add links for trouble reports -->
+        <router-link to="/tech" v-if="$auth.isAuthenticated">Technician</router-link>
+        <router-link to="/engineer" v-if="$auth.isAuthenticated">Engineer</router-link>
+        <router-link to="/writer" v-if="$auth.isAuthenticated">Technical Writer</router-link>
      </div>
   </nav>
 </template>
