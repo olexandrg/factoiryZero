@@ -3,25 +3,26 @@
         <!-- TODO: Remove this message in production -->
         <p><span id="dev_message">Development message:</span> Technician View</p>
 
+        <!-- Lists all tools currently on the factory floor -->
         <div v-if="tools.length > 0">
             <table class="tool-table">
-            <thead>
-            <tr>
-                <th>BIN</th>
-                <th>Customer</th>
-                <th>Type</th>
-                <th>Serial Number</th>
-            </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in tools" :key="item.id">
-                  <td>{{ item.bin }}</td>
-                  <td>{{ item.customer }}</td>
-                  <td>{{ item.type }}</td>
-                  <td>{{ item.sn }}</td>
-              </tr>
-            </tbody>
-        </table>
+                <thead>
+                    <tr>
+                        <th>BIN</th>
+                        <th>Customer</th>
+                        <th>Type</th>
+                        <th>Serial Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in tools" :key="item.id">
+                        <td>{{ item.bin }}</td>
+                        <td>{{ item.customer }}</td>
+                        <td>{{ item.type }}</td>
+                        <td>{{ item.sn }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
@@ -52,7 +53,6 @@
     };
 </script>
 
-// Style
 <style>
 .tool-table table {
     border-collapse: collapse;

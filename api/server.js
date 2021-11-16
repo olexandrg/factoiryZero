@@ -65,6 +65,21 @@ app.get('/api/tools', (req, res) => {
   res.json(tools);
 });
 
+// placeholder for error reports
+
+const reports = [
+  {
+    bin: "MFG133A",
+    fault: "Sample fault report.",
+    status: "Review Required"
+  }
+]
+
+app.get('/api/reports', (req, res) => {
+  console.log('api/reports called')
+  res.json(reports);
+});
+
 // required binders for server; leave alone
 app.get('/', (req,res) => {
   res.sendFile(process.cwd() + '/my-app/dist/index.html');
