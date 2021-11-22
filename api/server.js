@@ -71,7 +71,8 @@ const reports = [
   {
     bin: "MFG133A",
     fault: "Sample fault report.",
-    status: "Review Required"
+    status: "Review Required",
+    dateAdded: "11/10/2021"
   }
 ]
 

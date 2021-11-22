@@ -4,6 +4,7 @@
         <p><span id="dev_message">Development message:</span> Engineer View</p>
 
         <!-- Lists all fault reports currently on the factory floor -->
+        <h2> Fault Reports </h2>
         <div v-if="reports.length > 0">
             <table class="reports-table">
                 <thead>
@@ -11,6 +12,7 @@
                         <th>BIN</th>
                         <th>Fault</th>
                         <th>Status</th>
+                        <th>Date Added:</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,6 +20,7 @@
                         <td>{{ item.bin }}</td>
                         <td>{{ item.fault }}</td>
                         <td>{{ item.status }}</td>
+                        <td>{{ item.dateAdded }} <span id="new_item" v-if="item.dateAdded == checkToday()">New</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -42,6 +45,10 @@
         this.reports = response
         this.numberOfReports = this.reports.length
     })
+    },
+    checkToday() {
+        let today = new Date()
+        return today.toISOString().substr(0,10)
     }
     
     },
@@ -53,6 +60,7 @@
 </script>
 
 <style>
+
 .reports-table table {
     border-collapse: collapse;
     margin: 25px 0;

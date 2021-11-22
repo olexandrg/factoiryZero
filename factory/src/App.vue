@@ -36,4 +36,8 @@ Fonts List:
     color: red;
 }
 
+#new_item {
+    color: #eb4934;
+}
+
 </style>

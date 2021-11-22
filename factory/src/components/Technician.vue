@@ -24,10 +24,10 @@
           </tr>
         </tbody>
       </table>
-      <!-- Add new fault report -->
     </div>
+    
+    <!-- Add new fault report -->
     <h2> Add a new fault report </h2>
-
     <form>
       <div class="row">
         <div class="form-group col-md-6">
@@ -98,10 +98,12 @@ export default {
       });
     },
     createNewReport() {
+        let today = new Date();
         const payload = {
             bin: this.bin,
             fault: this.fault,
-            status: this.status
+            status: this.status,
+            dateAdded: today.toISOString().substr(0, 10)
         }
         createReport(payload).then(response => {
             console.log(response)
