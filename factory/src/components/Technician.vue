@@ -25,53 +25,55 @@
         </tbody>
       </table>
     </div>
-    
+
     <!-- Add new fault report -->
     <h2> Add a new fault report </h2>
-    <form>
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label htmlFor="Fault BIN">BIN: </label>
-          <input
-            type="text"
-            class="form-control"
-            v-model="bin"
-            name="bin"
-            id="bin"
-            aria-describedby="emailHelp"
-            placeholder=" "
-          />
+    <div class="fault-report-form">
+        <form>
+        <div class="row">
+            <div class="form-group col-md-6">
+            <label htmlFor="Fault BIN">BIN: </label>
+            <input
+                type="text"
+                class="form-control"
+                v-model="bin"
+                name="bin"
+                id="bin"
+                aria-describedby="emailHelp"
+                placeholder=" "
+            />
+            </div>
+            <div class="form-group col-md-6">
+            <label htmlFor="fault">Fault: </label>
+            <input
+                type="text"
+                class="form-control"
+                v-model="fault"
+                name="fault"
+                id="fault"
+                placeholder=" "
+            />
+            </div>
         </div>
-        <div class="form-group col-md-6">
-          <label htmlFor="fault">Fault: </label>
-          <input
-            type="text"
-            class="form-control"
-            v-model="fault"
-            name="fault"
-            id="fault"
-            placeholder=" "
-          />
+        <div class="row">
+            <div class="form-group col-md-12">
+            <label htmlFor="status">Status: </label>
+            <input
+                type="text"
+                class="form-control"
+                v-model="status"
+                name="status"
+                id="status"
+                aria-describedby="emailHelp"
+                placeholder=" "
+            />
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <label htmlFor="status">Status: </label>
-          <input
-            type="text"
-            class="form-control"
-            v-model="status"
-            name="status"
-            id="status"
-            aria-describedby="emailHelp"
-            placeholder=" "
-          />
-        </div>
-      </div>
-      <button type="button" @click="createNewReport()" class="btn btn-danger">
-        Create Report
-      </button>
-    </form>
+        <button type="button" @click="createNewReport()" class="btn btn-danger">
+            Create Report
+        </button>
+        </form>
+    </div>
   </div>
 </template>
 
@@ -147,5 +149,32 @@ export default {
 .tool-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+input[type=text], select, textarea {
+  width: 100%; 
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px;
+  resize: vertical;
+}
+button[type=button] {
+  background-color: #009879;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[type=button]:hover {
+  background-color: #005b48;
+}
+.fault-report-form {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 50%;
 }
 </style>
