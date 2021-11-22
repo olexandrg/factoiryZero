@@ -84,8 +84,15 @@ app.get('/api/reports', (req, res) => {
 app.post('/api/reports', (req, res) => {
   const report = req.body.report;
   console.log('Adding report: ', report);
-  reports.push(report);
-  res.json("report added");
+  try {
+    reports.push(report);
+    res.json("success");
+  }
+  catch (error) {
+    console.log("Error in /api/reports: ", error)
+    res.json("error")
+  }
+
 });
 
 // required binders for server; leave alone

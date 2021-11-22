@@ -72,6 +72,7 @@
         <button type="button" @click="createNewReport()" class="btn btn-danger">
             Create Report
         </button>
+        <span> {{ this.submitText }}</span>
         </form>
     </div>
   </div>
@@ -90,6 +91,8 @@ export default {
       bin: "",
       fault: "",
       status: "",
+      submitStatus: false,
+      submitText: ""
     };
   },
   methods: {
@@ -109,8 +112,21 @@ export default {
         }
         createReport(payload).then(response => {
             console.log(response)
+            this.displaySubmitStatus(response)
         });
+        this.displaySubmitStatus()
     },
+    displaySubmitStatus(response) {
+        if (response == 'success') {
+            this.submitStatus = !this.submitStatus
+            this.submitText = this.submitStatus ? ' Success' : ''
+        }
+        else {
+            this.submitStatus = false
+            this.submitText = 'Error'
+        }
+
+    }
   },
   // Automatically loads all tools on page load
   beforeMount() {
