@@ -1,87 +1,149 @@
 <template>
-    <div>
-        <!-- TODO: Remove this message in production -->
-        <p><span id="dev_message">Development message:</span> Technician View</p>
+  <div>
+    <!-- TODO: Remove this message in production -->
+    <p><span id="dev_message">Development message:</span> Technician View</p>
 
-        <!-- Lists all tools currently on the factory floor -->
-        <div v-if="tools.length > 0">
-            <table class="tool-table">
-                <thead>
-                    <tr>
-                        <th>BIN</th>
-                        <th>Customer</th>
-                        <th>Type</th>
-                        <th>Serial Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in tools" :key="item.id">
-                        <td>{{ item.bin }}</td>
-                        <td>{{ item.customer }}</td>
-                        <td>{{ item.type }}</td>
-                        <td>{{ item.sn }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- Lists all tools currently on the factory floor -->
+    <h2> Current Factory Tool List </h2>
+    <div v-if="tools.length > 0">
+      <table class="tool-table">
+        <thead>
+          <tr>
+            <th>BIN</th>
+            <th>Customer</th>
+            <th>Type</th>
+            <th>Serial Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in tools" :key="item.id">
+            <td>{{ item.bin }}</td>
+            <td>{{ item.customer }}</td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.sn }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Add new fault report -->
     </div>
+    <h2> Add a new fault report </h2>
+
+    <form>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label htmlFor="Fault BIN">BIN: </label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="bin"
+            name="bin"
+            id="bin"
+            aria-describedby="emailHelp"
+            placeholder=" "
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label htmlFor="fault">Fault: </label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="fault"
+            name="fault"
+            id="fault"
+            placeholder=" "
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label htmlFor="status">Status: </label>
+          <input
+            type="text"
+            class="form-control"
+            v-model="status"
+            name="status"
+            id="status"
+            aria-describedby="emailHelp"
+            placeholder=" "
+          />
+        </div>
+      </div>
+      <button type="button" @click="createNewReport()" class="btn btn-danger">
+        Create Report
+      </button>
+    </form>
+  </div>
 </template>
 
 <script>
-    import { getAllTools } from '../services/TechnicianService'
+import { getAllTools } from "../services/TechnicianService";
+import { createReport } from "../services/EngineerService";
 
-    export default {
-    name: 'Technician',
-    data() {
-        return {
-            tools: [],
-            numberOfTools: 0
-        }
-    },
-    methods: {
-    getAllTools() {
-        getAllTools().then(response => {
-        this.tools = response
-        this.numberOfTools = this.tools.length
-    })
-    }
-    },
-    // Automatically loads all tools on page load
-    beforeMount(){
-        this.getAllTools()
-    }
+export default {
+  name: "Technician",
+  data() {
+    return {
+      tools: [],
+      numberOfTools: 0,
+      bin: "",
+      fault: "",
+      status: "",
     };
+  },
+  methods: {
+    getAllTools() {
+      getAllTools().then((response) => {
+        this.tools = response;
+        this.numberOfTools = this.tools.length;
+      });
+    },
+    createNewReport() {
+        const payload = {
+            bin: this.bin,
+            fault: this.fault,
+            status: this.status
+        }
+        createReport(payload).then(response => {
+            console.log(response)
+        });
+    },
+  },
+  // Automatically loads all tools on page load
+  beforeMount() {
+    this.getAllTools();
+  },
+};
 </script>
 
 <style>
 .tool-table table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 .tool-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
-.tool-table th, 
+.tool-table th,
 .tool-table td {
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 .tool-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
 }
 .tool-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 .tool-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #009879;
 }
 .tool-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879
+  font-weight: bold;
+  color: #009879;
 }
 </style>

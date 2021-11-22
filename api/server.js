@@ -80,6 +80,13 @@ app.get('/api/reports', (req, res) => {
   res.json(reports);
 });
 
+app.post('/api/reports', (req, res) => {
+  const report = req.body.report;
+  console.log('Adding report: ', report);
+  reports.push(report);
+  res.json("report added");
+});
+
 // required binders for server; leave alone
 app.get('/', (req,res) => {
   res.sendFile(process.cwd() + '/my-app/dist/index.html');
