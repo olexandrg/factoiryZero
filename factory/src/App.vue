@@ -32,4 +32,12 @@ Fonts List:
   color: #2c3e50;
 }
 
+#dev_message {
+    color: red;
+}
+
+#new_item {
+    color: #eb4934;
+}
+
 </style>
