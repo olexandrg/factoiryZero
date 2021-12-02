@@ -19,11 +19,12 @@ export default {
 
 // Style
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Zen+Old+Mincho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Ubuntu:wght@700&family=Zen+Old+Mincho&display=swap');
 /* 
 Fonts List:
 - Lato
 - Zen Old Mincho
+- Ubuntu
 */
 #app {
   font-family: 'Zen Old Mincho', sans-serif;

@@ -41,6 +41,8 @@ a:hover {
     cursor:pointer;
 }
 img {
-  align-items: flex-start;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 </style>
