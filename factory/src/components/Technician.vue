@@ -2,7 +2,10 @@
   <div>
     <!-- TODO: Remove this message in production -->
     <p><span id="dev_message">Development message:</span> Technician View</p>
-
+    <div v-if="displayDirections == true">
+      Display directions for: 
+      {{ this.directions }}
+    </div> 
     <!-- Lists all tools currently on the factory floor -->
     <h2> Current Factory Tool List </h2>
     <div v-if="tools.length > 0">
@@ -21,6 +24,11 @@
             <td>{{ item.customer }}</td>
             <td>{{ item.type }}</td>
             <td>{{ item.sn }}</td>
+            <td>
+              <button @click="loadDirections(item.bin)">
+                Directions
+              </button>
+              </td>
           </tr>
         </tbody>
       </table>
@@ -79,7 +87,7 @@
 </template>
 
 <script>
-import { getAllTools } from "../services/TechnicianService";
+import { getAllTools, getToolDirections } from "../services/TechnicianService";
 import { createReport } from "../services/EngineerService";
 
 export default {
@@ -92,7 +100,9 @@ export default {
       fault: "",
       status: "",
       submitStatus: false,
-      submitText: ""
+      submitText: "",
+      displayDirections: false,
+      directions: ""
     };
   },
   methods: {
@@ -126,6 +136,18 @@ export default {
             this.submitText = 'Error'
         }
 
+    },
+    loadDirections(bin) {
+      // TODO: capture the bin or redirect
+      //this.$router.push('/directions');
+      getToolDirections(bin).then(response => {
+        console.log("Get Tool Directions response: ", response);
+        if (response.status != "200") {
+          console.log("Directions mismatch!")
+        }
+        this.directions = response.directions;
+      }),
+      this.displayDirections = true
     }
   },
   // Automatically loads all tools on page load

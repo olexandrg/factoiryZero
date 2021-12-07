@@ -27,7 +27,7 @@ nav {
 .navbar-start {
     padding-bottom: 0.2em;
 }
-a {
+.navbar-start a {
     background-color: #2A9D8F;
     color: whitesmoke;
     padding: 0.2em;

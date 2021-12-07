@@ -95,6 +95,36 @@ app.post('/api/reports', (req, res) => {
 
 });
 
+// placeholder for directions
+
+const directions = [
+  {
+    bin: "MFG133A",
+    directions: "Test tool directions"
+  }
+]
+
+app.post('/api/directions', (req, res) => {
+  console.log('api/directions called')
+  let bin = req.body
+  let result = directions.find(x => x.bin == bin.report)
+  console.log("Result: ", result);
+
+  // return message is directions for a BIN aren't found
+  if (result == undefined ) {
+    console.log(`Unable to find tool directions for: ${req.body.report}`)
+    result = { bin: `${req.body.report}`, directions: "Unable to find tool directions!", status: "401"}
+    res.json(result)
+  }
+
+  // add a status code to compare later
+  else {
+    result.status = "200"
+    res.json(result);
+
+  }
+});
+
 // required binders for server; leave alone
 app.get('/', (req,res) => {
   res.sendFile(process.cwd() + '/my-app/dist/index.html');
