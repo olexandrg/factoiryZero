@@ -101,6 +101,10 @@ const directions = [
   {
     bin: "MFG133A",
     directions: "Test tool directions"
+  },
+  {
+    bin: "MFG134B",
+    directions: {"dir1": "Step 1", "dir2": "Step 2"}
   }
 ]
 
