@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <!-- TODO: Remove this message in production -->
-    <p><span id="dev_message">Development message:</span> Technician View</p>
-
+  <div class="wrapper">
     <!-- Lists all tools currently on the factory floor -->
+    <div class="tool-info">
     <h2> Current Factory Tool List </h2>
     <div v-if="tools.length > 0">
       <table class="tool-table">
@@ -21,6 +19,11 @@
             <td>{{ item.customer }}</td>
             <td>{{ item.type }}</td>
             <td>{{ item.sn }}</td>
+            <td>
+              <button @click="loadDirections(item.bin)">
+                Directions
+              </button>
+              </td>
           </tr>
         </tbody>
       </table>
@@ -75,11 +78,22 @@
         <span> {{ this.submitText }}</span>
         </form>
     </div>
+    </div>
+    <div class="tool-dir">
+      <span v-if="displayDirections == true">
+        <h2> Build Steps - {{this.displayBin}} </h2>
+
+        <!-- Directions for: {{this.displayBin}} -->
+        <br>
+        {{ this.directions.dir1 }} 
+        {{ this.directions.dir2 }}
+      </span>
+    </div> 
   </div>
 </template>
 
 <script>
-import { getAllTools } from "../services/TechnicianService";
+import { getAllTools, getToolDirections } from "../services/TechnicianService";
 import { createReport } from "../services/EngineerService";
 
 export default {
@@ -92,7 +106,10 @@ export default {
       fault: "",
       status: "",
       submitStatus: false,
-      submitText: ""
+      submitText: "",
+      displayDirections: false,
+      displayBin: "",
+      directions: ""
     };
   },
   methods: {
@@ -126,16 +143,44 @@ export default {
             this.submitText = 'Error'
         }
 
+    },
+    loadDirections(bin) {
+      getToolDirections(bin).then(response => {
+        console.log("Get Tool Directions response: ", response);
+
+        // check if correct BIN was searched in the query
+        if (response.status != "200") {
+          console.log("Directions mismatch!")
+        }
+        this.displayBin = response.bin
+        this.directions = response.directions;
+      }),
+
+      // mark true to let the directions div be viewable
+      this.displayDirections = true
     }
   },
   // Automatically loads all tools on page load
   beforeMount() {
+    this.displayDirections = false;
     this.getAllTools();
   },
 };
 </script>
 
 <style>
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+}
+.tool-dir {
+  padding-left: 10px;
+}
+.tool-info {
+  padding-left: 10px;
+  width: 100%;
+}
 .tool-table table {
   border-collapse: collapse;
   margin: 25px 0;
@@ -191,6 +236,6 @@ button[type=button]:hover {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    width: 50%;
+    width: 90%;
 }
 </style>
