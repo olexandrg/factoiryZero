@@ -25,6 +25,7 @@ build site:
     - cd factory
     - npm i @vue/cli@next
     - npm i @vue/cli-service
+    - export NODE_OPTIONS=--openssl-legacy-provider
     - npm run serve
 
 unit test:
