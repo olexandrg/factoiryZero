@@ -104,12 +104,35 @@ const directions = [
   },
   {
     bin: "MFG134B",
-    directions: {"dir1": "Step 1", "dir2": "Step 2"}
+    directions: ["Step 1", "Step 2"]
   }
 ]
 
+app.put('/api/directions', (req, res) => {
+  console.log('api/directions called PUT')
+  let bin = req.body
+  console.log("checking bin", bin);
+  let result = directions.find(x => x.bin == bin.report.bin)
+  console.log("Result: ", result);
+
+  // return message is directions for a BIN aren't found
+  if (result == undefined ) {
+    console.log(`Unable to find tool directions for: ${req.body.report}`)
+    result = { bin: `${req.body.report}`, directions: "Unable to find tool directions!", status: "401"}
+    res.json(result)
+  }
+
+  // add a status code to compare later
+  else {
+    result.directions[req.body.report.step] = req.body.report.directions
+    result.status = "200"
+    res.json(result);
+
+  }
+});
+
 app.post('/api/directions', (req, res) => {
-  console.log('api/directions called')
+  console.log('api/directions called POST')
   let bin = req.body
   let result = directions.find(x => x.bin == bin.report)
   console.log("Result: ", result);
