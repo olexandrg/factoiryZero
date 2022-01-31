@@ -19,7 +19,7 @@ stages:          # List of stages for jobs, and their order of execution
   - deploy
 
 build site:
-  image: node:6
+  image: node:17.4.0-alpine
   stage: build
   script:
     - cd factory
