@@ -23,6 +23,7 @@ build site:
   stage: build
   script:
     - cd factory
+    - npm update -g npm
     - npm i @vue/cli@next
     - npm i @vue/cli-service
     - npm run serve
