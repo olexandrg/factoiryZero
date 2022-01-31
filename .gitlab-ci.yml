@@ -38,6 +38,7 @@ pages: # the job must be named pages
   image: node:17.4.0-alpine
   stage: deploy
   script:
+    - cd factory
     - npm ci
     - npm run build
     - mv public public-vue # GitLab Pages hooks on the public folder
