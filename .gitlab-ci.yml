@@ -23,7 +23,8 @@ build site:
   stage: build
   script:
     - cd factory
-    - npm install -g @vue/cli@next
+    - npm i @vue/cli@next
+    - npm i @vue/cli-service
     - npm run serve
 
 unit test:
