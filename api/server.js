@@ -100,7 +100,7 @@ app.post('/api/reports', (req, res) => {
 const directions = [
   {
     bin: "MFG133A",
-    directions: "Test tool directions"
+    directions: ["Step 1", "Step 2"]
   },
   {
     bin: "MFG134B",

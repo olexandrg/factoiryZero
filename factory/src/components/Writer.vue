@@ -33,15 +33,11 @@
 
         <!-- Directions for: {{this.displayBin}} -->
         <br />
-        <!-- {{ this.directions.dir1 }}
-        {{ this.directions.dir2 }} -->
-
         <!-- new stuff -->
         <table class="directions-table">
           <thead>
             <tr>
               <th>Step</th>
-              <!-- <th>Details</th> -->
               <th>Date Modified</th>
               <th>Tech Writer</th>
               <th>Edit</th>
@@ -50,7 +46,6 @@
           <tbody>
             <tr v-for="(item, index) in this.directions" :key="item.id">
               <td>{{ index + 1}}</td>
-              <!-- <td>{{ item }}</td> -->
               <td>Date(todo)</td>
               <td>Jayna Doe</td>
               <td>
@@ -89,7 +84,6 @@ export default {
       submitStatus: false,
       submitText: "",
       displayDirections: false,
-    //   editStatus: false,
       displayBin: "",
       directions: "",
     };
@@ -116,7 +110,6 @@ export default {
         (this.displayDirections = true);
     },
     editDirections(inputDirections, inputStep) {
-        //this.editStatus = true;
         const payload = {
         step: inputStep,
         bin: this.displayBin,
@@ -125,7 +118,6 @@ export default {
       editToolDirections(payload).then((response) => {
         console.log(response);
         console.log("check put response", response);
-        //this.editStatus = false;
       });
     },
   },
@@ -144,6 +136,9 @@ export default {
   align-items: start;
 }
 .tool-dir {
+  display: grid;
+  justify-self: center;
+  padding-right: 2em;
   padding-left: 10px;
 }
 .tool-info {
@@ -168,9 +163,14 @@ export default {
     background-color: rgb(0, 174, 255);
     color: #ffffff;
     text-align: left;
+		padding: 1em;
 }
 .tool-table th,
 .tool-table td {
+  padding: 12px 15px;
+}
+.directions-table th,
+.directions-table td {
   padding: 12px 15px;
 }
 .tool-table tbody tr {
@@ -180,6 +180,15 @@ export default {
   background-color: #f3f3f3;
 }
 .tool-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+.directions-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.directions-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.directions-table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
 }
 .tool-table tbody tr.active-row {
