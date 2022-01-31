@@ -24,11 +24,7 @@ build site:
   script:
     - cd factory
     - npm install -g @vue/cli@next
-    - npm run build
-  artifacts:
-    expire_in: 1 week
-    paths:
-      - dist
+    - npm run serve
 
 unit test:
   image: node:6
