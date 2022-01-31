@@ -29,12 +29,13 @@ build site:
     - npm run build
 
 unit test:
-  image: node:6
+  image: node:17.4.0-alpine
   stage: test
   script:
     - echo "Runnings tests"
 
 pages: # the job must be named pages
+  image: node:17.4.0-alpine
   stage: deploy
   script:
     - npm ci
