@@ -26,7 +26,7 @@ build site:
     - npm i @vue/cli@next
     - npm i @vue/cli-service
     - export NODE_OPTIONS=--openssl-legacy-provider
-    - npm run serve
+    - npm run build
 
 unit test:
   image: node:6
@@ -34,8 +34,17 @@ unit test:
   script:
     - echo "Runnings tests"
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+pages: # the job must be named pages
+  stage: deploy
   script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
+    - npm ci
+    - npm run build
+    - mv public public-vue # GitLab Pages hooks on the public folder
+    - mv dist public # rename the dist folder (result of npm run build)
+    # optionally, you can activate gzip support with the following line:
+    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
+  artifacts:
+    paths:
+      - public # artifact path must be /public for GitLab Pages to pick it up
+  only:
+    - master
