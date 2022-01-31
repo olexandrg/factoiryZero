@@ -1,9 +1,11 @@
 <template>
   <nav class="navbar container" role="navigation" aria-label="main navigation">
     <img alt="factory logo" src="../assets/logo.png">
-    <div class="navbar-start">
+    <div class="navbar-start" >
         <router-link to="/">Home</router-link>
-        <router-link to="/tech">Technician</router-link>
+        <router-link to="/tech" v-if="$auth.isAuthenticated">Technician</router-link>
+        <router-link to="/engineer" v-if="$auth.isAuthenticated">Engineer</router-link>
+        <router-link to="/writer" v-if="$auth.isAuthenticated">Technical Writer</router-link>
      </div>
   </nav>
 </template>
@@ -14,28 +16,33 @@
   };
 </script>
 
-// Style
 <style>
 nav {
-    background-color: #fefae0;
+    background-color: whitesmoke;
     margin-bottom: 30px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #264653; 
     display: grid;
-    /* align-items: flex-start; */
     justify-content: center;
 }
-a {
-    font-weight: bold;
-    color: #2c3e50;
+.navbar-start {
+    padding-bottom: 0.2em;
 }
-router-link {
-    padding: 5px;
+.navbar-start a {
+    background-color: #2A9D8F;
+    color: whitesmoke;
+    padding: 0.2em;
+    text-decoration: none;
+    border-style: solid;
+    border-color: #264653;
+    border-width: 1px 1px 0 1px;
 }
-router-link:hover {
-    color: gray;
+a:hover {
+    color: #cccccc;
     cursor:pointer;
 }
 img {
-  align-items: flex-start;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 </style>
