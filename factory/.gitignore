@@ -3,6 +3,8 @@ node_modules
 /dist
 api/node_modules/
 
+#package lock
+package-lock.json
 
 # local env files
 .env.local
